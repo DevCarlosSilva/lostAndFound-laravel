@@ -1,7 +1,6 @@
 @extends('master')
 
 @section('content')
-<a href="{{ route('home') }}">Go back</a>
 <h2>Admin Panel</h2>
 @if (session()->has('message'))
 {{ session()->get('message'); }}

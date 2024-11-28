@@ -1,7 +1,6 @@
 @extends('master')
 
 @section('content')
-<a href="{{ route('home') }}">Home</a>
 <hr>
 <h2>Items</h2>
 @if (session()->has('message'))
