@@ -20,8 +20,9 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        $items = $this->item->all();
-        return view('items', ['items' => $items]);
+        $lostItems = Item::where('status', 'Perdido')->get();
+        $returnedItems = Item::where('status', 'Devolvido')->get();
+        return view('items', compact('lostItems', 'returnedItems'));
     }
 
     /**
@@ -45,7 +46,7 @@ class ItemsController extends Controller
             'found_date' => $request->input('found_date'),
             'category_id' => $request->input('category_id'),
             'location_id' => $request->input('location_id'),
-            'status' => $request->input('status')
+            // 'status' => $request->input('status')
         ]);
         if ($created) {
             return redirect()->back()->with('message', 'Successfully created');

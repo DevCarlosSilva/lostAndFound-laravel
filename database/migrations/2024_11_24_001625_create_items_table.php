@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->date('found_date');
-            $table->string('status');
+            $table->string('status')->default('Perdido');
             $table->date('returned_date')->nullable();
             $table->string('returned_to')->nullable();
             $table->unsignedBigInteger('category_id')->constrained()->onDelete('cascade');
