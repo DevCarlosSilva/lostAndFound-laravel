@@ -7,7 +7,6 @@ use App\Http\Controllers\LocationsController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\CategoriesController;
-// use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('dashboard');

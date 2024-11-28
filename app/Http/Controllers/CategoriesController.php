@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Item;
 use Illuminate\Http\Request;
@@ -22,6 +23,9 @@ class CategoriesController extends Controller
      */
     public function create()
     {
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            return redirect('/');
+        }
         return view('category_create');
     }
 
@@ -41,7 +45,7 @@ class CategoriesController extends Controller
 
     public function show(Category $category)
     {
-        
+
         return view('category_show', ['category' => $category]);
     }
 

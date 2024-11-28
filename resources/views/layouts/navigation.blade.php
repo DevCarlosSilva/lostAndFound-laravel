@@ -26,11 +26,14 @@
                         {{ __('Relatos') }}
                     </x-nav-link>
                 </div>
+                @if(auth()->check() && auth()->user()->is_admin)
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('adminPanel')" :active="request()->routeIs('adminPanel')">
                         {{ __('Painel de Administração') }}
                     </x-nav-link>
                 </div>
+                @endif
+
             </div>
 
             <!-- Settings Dropdown -->

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use App\Models\Location;
 
@@ -16,6 +17,9 @@ class AdminPanelController extends Controller
     }
     public function index()
     {
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            return redirect('/');
+        }
         // Listing
         $categories = Category::withCount('items', 'reports')->get();
         $locations = Location::withCount('items', 'reports')->get();

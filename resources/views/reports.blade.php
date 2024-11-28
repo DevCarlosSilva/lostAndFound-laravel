@@ -7,25 +7,30 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            @if (session()->has('message'))
-            {{ session()->get('message'); }}
-            @endif
-            <hr>
-            <a href="{{ route('reports.create') }}">Create</a>
-            <hr>
-            @if ($reports->isEmpty())
-            <div class="">
-                <strong>Informação:</strong> Não há relatos.
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    @if (session()->has('message'))
+                    {{ session()->get('message'); }}
+                    @endif
+                    <hr>
+                    <a href="{{ route('reports.create') }}">Create</a>
+                    <hr>
+                    @if ($reports->isEmpty())
+                    <div class="">
+                        <strong>Informação:</strong> Não há relatos.
+                    </div>
+                    @else
+                    <ul>
+                        @foreach ($reports as $report)
+                        <li>{{ $report->item_name }} | <a
+                                href="{{ route('reports.edit', ['report' => $report->id]) }}">Edit</a>
+                            | <a href="{{ route('reports.show', ['report' => $report->id]) }}">Show</a>
+                        </li>
+                        @endforeach
+                    </ul>
+                    @endif
+                </div>
             </div>
-            @else
-            <ul>
-                @foreach ($reports as $report)
-                <li>{{ $report->item_name }} | <a href="{{ route('reports.edit', ['report' => $report->id]) }}">Edit</a>
-                    | <a href="{{ route('reports.show', ['report' => $report->id]) }}">Show</a>
-                </li>
-                @endforeach
-            </ul>
-            @endif
         </div>
     </div>
 </x-app-layout>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Location;
 use Illuminate\Http\Request;
 
@@ -19,6 +20,9 @@ class LocationsController extends Controller
      */
     public function create()
     {
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            return redirect('/');
+        }
         return view('location_create');
     }
 
