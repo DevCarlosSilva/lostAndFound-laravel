@@ -19,7 +19,7 @@
             <input type="hidden" name="_method" value="PUT">
             <input type="text" name="name" value="{{ $item->name }}">
             <input type="text" name="description" value="{{ $item->description }}">
-            <label for="found_date">Date of find:</label>
+            <label for="found_date">Data em que o relato foi feito:</label>
             <input type="date" name="found_date" id="found_date" value="{{ $item->found_date }}">
             <select name="category_id">
               <option value="{{ $item->category_id }}" selected>{{ $item->category->name }}</option>
@@ -44,7 +44,7 @@
             <input type="date" name="returned_date" id="returned_date" value="{{ $item->returned_date }}">
             <input type="text" name="returned_to" value="{{ $item->returned_to }}"></input>
             <hr>
-            <button type="submit">Edit</button>
+            <button type="submit">Editar</button>
           </form>
         </div>
       </div>

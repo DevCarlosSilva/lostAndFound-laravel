@@ -13,7 +13,7 @@
                     {{ session()->get('message'); }}
                     @endif
                     <hr>
-                    <a href="{{ route('reports.create') }}">Create</a>
+                    <a href="{{ route('reports.create') }}">Criar</a>
                     <hr>
                     @if ($reports->isEmpty())
                     <div class="">
@@ -23,8 +23,8 @@
                     <ul>
                         @foreach ($reports as $report)
                         <li>{{ $report->item_name }} | <a
-                                href="{{ route('reports.edit', ['report' => $report->id]) }}">Edit</a>
-                            | <a href="{{ route('reports.show', ['report' => $report->id]) }}">Show</a>
+                                href="{{ route('reports.edit', ['report' => $report->id]) }}">Editar</a>
+                            | <a href="{{ route('reports.show', ['report' => $report->id]) }}">Ver</a>
                         </li>
                         @endforeach
                     </ul>

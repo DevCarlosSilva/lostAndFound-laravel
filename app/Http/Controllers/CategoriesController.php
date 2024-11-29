@@ -18,9 +18,6 @@ class CategoriesController extends Controller
         $this->item = new Item();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         if (!Auth::check() || !Auth::user()->is_admin) {
@@ -29,9 +26,6 @@ class CategoriesController extends Controller
         return view('category_create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $created = $this->category->create([
@@ -49,9 +43,6 @@ class CategoriesController extends Controller
         return view('category_show', ['category' => $category]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $this->category->where('id', $id)->delete();

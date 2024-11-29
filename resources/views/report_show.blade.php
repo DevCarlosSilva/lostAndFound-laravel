@@ -23,7 +23,7 @@
                         <input type="hidden" name="_method" value="DELETE">
                         @if(auth()->check() && auth()->user()->is_admin)
                         <div>
-                            <button type="submit">Delete</button>
+                            <button type="submit">Deletar</button>
                         </div>
                         @endif
                     </form>

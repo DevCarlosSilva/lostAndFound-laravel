@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div style="width: 50px" class="shrink-0 flex items-center">
-                    <a href="{{ route('items.index') }}">
+                    <a href="{{ route('dashboard') }}">
                         <img src="{{ asset('images/logo.jpg') }}" class="rounded-full" alt="">
                     </a>
                 </div>

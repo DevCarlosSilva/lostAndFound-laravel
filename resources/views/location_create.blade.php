@@ -17,8 +17,8 @@
 
                     <form action="{{ route('locations.store') }}" method="post">
                         @csrf
-                        <input type="text" name="name" placeholder="Location name">
-                        <button type="submit">Create</button>
+                        <input type="text" name="name" placeholder="Nome do local">
+                        <button type="submit">Criar</button>
                     </form>
                 </div>
             </div>

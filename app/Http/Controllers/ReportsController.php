@@ -15,18 +15,13 @@ class ReportsController extends Controller
     {
         $this->report = new Report();
     }
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $reports = $this->report->all();
         return view('reports', ['reports' => $reports]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $categories = Category::all();
@@ -34,9 +29,6 @@ class ReportsController extends Controller
         return view('report_create', compact('categories', 'locations'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $created = $this->report->create([
@@ -53,18 +45,12 @@ class ReportsController extends Controller
         return redirect()->back()->with('message', "Error: couldn't create report");
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Report $report)
     {
         $report = Report::with(['category', 'location'])->findOrFail($report->id);
         return view('report_show', ['report' => $report]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Report $report)
     {
         $categories = Category::all();
@@ -73,9 +59,6 @@ class ReportsController extends Controller
         return view('report_edit', ['report' => $report], compact('categories', 'locations'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $updated = $this->report->where('id', $id)->update($request->except(['_token', '_method']));
@@ -85,9 +68,6 @@ class ReportsController extends Controller
         return redirect()->back()->with('message', "Error: couldn't update report");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $this->report->where('id', $id)->delete();

@@ -17,8 +17,8 @@
 
                     <form action="{{ route('categories.store') }}" method="post">
                         @csrf
-                        <input type="text" name="name" placeholder="Category name">
-                        <button type="submit">Create</button>
+                        <input type="text" name="name" placeholder="Nome da categoria">
+                        <button type="submit">Criar</button>
                     </form>
                 </div>
             </div>

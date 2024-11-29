@@ -18,7 +18,7 @@
             <input type="hidden" name="_method" value="PUT">
             <input type="text" name="item_name" value="{{ $report->item_name }}">
             <input type="text" name="description" value="{{ $report->description }}">
-            <label for="report_date">Report date:</label>
+            <label for="report_date">Data em que o relato foi feito:</label>
             <input type="date" name="report_date" id="report_date" value="{{ $report->report_date }}">
             <input type="text" name="reporter_name" value="{{ $report->reporter_name }}">
             <select name="category_id">
@@ -33,7 +33,7 @@
               <option value="{{ $location->id }}">{{ $location->name }}</option>
               @endforeach
             </select>
-            <button type="submit">Edit</button>
+            <button type="submit">Editar</button>
           </form>
         </div>
       </div>

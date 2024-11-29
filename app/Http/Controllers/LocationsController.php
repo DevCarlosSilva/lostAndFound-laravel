@@ -15,9 +15,6 @@ class LocationsController extends Controller
         $this->location = new Location();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         if (!Auth::check() || !Auth::user()->is_admin) {
@@ -26,9 +23,6 @@ class LocationsController extends Controller
         return view('location_create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $created = $this->location->create([
@@ -40,9 +34,6 @@ class LocationsController extends Controller
         return redirect()->back()->with('message', "Error: couldn't create location");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $this->location->where('id', $id)->delete();

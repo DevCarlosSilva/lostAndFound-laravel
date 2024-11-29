@@ -14,7 +14,7 @@
           @endif
           @if(auth()->check() && auth()->user()->is_admin)
           <div>
-            <a href="{{ route('items.create') }}">Create</a>
+            <a href="{{ route('items.create') }}">Criar</a>
           </div>
           <hr>
           @endif
@@ -30,10 +30,10 @@
             <li>{{ $item->name }} |
               @if(auth()->check() && auth()->user()->is_admin)
               <div>
-                <a href="{{ route('items.edit', ['item' => $item->id]) }}">Edit</a> |
+                <a href="{{ route('items.edit', ['item' => $item->id]) }}">Editar</a> |
               </div>
               @endif
-              <a href="{{ route('items.show', ['item' => $item->id]) }}">Show</a>
+              <a href="{{ route('items.show', ['item' => $item->id]) }}">Ver</a>
             </li>
             @endforeach
           </ul>
@@ -50,10 +50,10 @@
             <li>{{ $item->name }} |
               @if(auth()->check() && auth()->user()->is_admin)
               <div>
-                <a href="{{ route('items.edit', ['item' => $item->id]) }}">Edit</a> |
+                <a href="{{ route('items.edit', ['item' => $item->id]) }}">Editar</a> |
               </div>
               @endif
-              <a href="{{ route('items.show', ['item' => $item->id]) }}">Show</a>
+              <a href="{{ route('items.show', ['item' => $item->id]) }}">Ver</a>
             </li>
             @endforeach
           </ul>
