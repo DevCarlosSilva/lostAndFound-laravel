@@ -15,24 +15,24 @@
           @endif
           <form action="{{ route('items.store') }}" method="post">
             @csrf
-            <input type="text" name="name" placeholder="Nome do item">
-            <input type="text" name="description" placeholder="Descrição do item">
-            <label for="found_date">Data em que o item foi encontrado:</label>
-            <input type="date" name="found_date" id="found_date">
-            <select name="category_id">
+            <input class="rounded" type="text" name="name" placeholder="Nome do item"><br>
+            <input class="mt-1 rounded" type="text" name="description" placeholder="Descrição do item"><br>
+            <label class="mt-1" for="found_date">Data em que o item foi encontrado:</label><br>
+            <input class="rounded" type="date" name="found_date" id="found_date"><br>
+            <select class="mt-1 rounded" name="category_id">
               <option value="" disabled selected>Escolha uma categoria</option>
               @foreach($categories as $category)
               <option value="{{ $category->id }}">{{ $category->name }}</option>
               @endforeach
-            </select>
-            <select name="location_id">
+            </select><br>
+            <select class="mt-1 rounded" name="location_id">
               <option value="" disabled selected>Escolha um local</option>
               @foreach($locations as $location)
               <option value="{{ $location->id }}">{{ $location->name }}</option>
               @endforeach
-            </select>
+            </select><br>
             <input type="hidden" name="status" value="Perdido">
-            <button type="submit">Criar</button>
+            <button class="mt-1 rounded underline font-semibold" type="submit">Criar</button>
           </form>
         </div>
       </div>

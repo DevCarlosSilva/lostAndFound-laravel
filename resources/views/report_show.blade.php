@@ -13,17 +13,17 @@
                     <form action="{{ route('reports.destroy', ['report' => $report->id]) }}" method="post">
                         @csrf
                         <ul>
-                            <li>{{ $report->item_name }}</li>
-                            <li>{{ $report->description }}</li>
-                            <li>{{ $report->report_date }}</li>
-                            <li>{{ $report->reporter_name }}</li>
-                            <li>{{ $report->category->name }}</li>
-                            <li>{{ $report->location->name }}</li>
+                            <li>Nome do item: {{ $report->item_name }}</li>
+                            <li>Descrição do item: {{ $report->description }}</li>
+                            <li>Data do relato: {{ $report->report_date }}</li>
+                            <li>Nome do relator: {{ $report->reporter_name }}</li>
+                            <li>Categoria: {{ $report->category->name }}</li>
+                            <li>Local: {{ $report->location->name }}</li>
                         </ul>
                         <input type="hidden" name="_method" value="DELETE">
                         @if(auth()->check() && auth()->user()->is_admin)
                         <div>
-                            <button type="submit">Deletar</button>
+                            <button style="color: red" class="mt-1" type="submit">Deletar</button>
                         </div>
                         @endif
                     </form>

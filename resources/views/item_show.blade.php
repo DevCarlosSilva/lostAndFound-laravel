@@ -13,19 +13,19 @@
           <form action="{{ route('items.destroy', ['item' => $item->id]) }}" method="post">
             @csrf
             <ul>
-              <li>{{ $item->name }}</li>
-              <li>{{ $item->description }}</li>
-              <li>{{ $item->found_date }}</li>
-              <li>{{ $item->category->name }}</li>
-              <li>{{ $item->location->name }}</li>
-              <li>{{ $item->status }}</li>
-              <li>{{ $item->returned_date }}</li>
-              <li>{{ $item->returned_to }}</li>
+              <li>Nome: {{ $item->name }}</li>
+              <li>Descrição: {{ $item->description }}</li>
+              <li>Data em que o item foi encontrado: {{ $item->found_date }}</li>
+              <li>Categoria: {{ $item->category->name }}</li>
+              <li>Local: {{ $item->location->name }}</li>
+              <li>Status do item: {{ $item->status }}</li>
+              <li>Data do retorno: {{ $item->returned_date }}</li>
+              <li>Nome de quem recebeu: {{ $item->returned_to }}</li>
             </ul>
             <input type="hidden" name="_method" value="DELETE">
             @if(auth()->check() && auth()->user()->is_admin)
             <div>
-              <button type="submit">Deletar</button>
+              <button style="color: red" class="mt-1" type="submit">Deletar</button>
             </div>
             @endif
           </form>

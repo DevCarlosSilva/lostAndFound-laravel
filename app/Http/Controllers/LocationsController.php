@@ -29,7 +29,7 @@ class LocationsController extends Controller
             'name' => $request->input('name')
         ]);
         if ($created) {
-            return redirect()->back()->with('message', 'Successfully created');
+            return redirect()->back()->with('message', 'Criado com sucesso');
         }
         return redirect()->back()->with('message', "Error: couldn't create location");
     }
@@ -37,6 +37,6 @@ class LocationsController extends Controller
     public function destroy(string $id)
     {
         $this->location->where('id', $id)->delete();
-        return redirect()->route('adminPanel')->with('message', 'Location deleted successfully');
+        return redirect()->route('adminPanel')->with('message', 'Local deletado');
     }
 }

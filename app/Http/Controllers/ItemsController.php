@@ -18,9 +18,10 @@ class ItemsController extends Controller
 
     public function index()
     {
+        $count = Item::count();
         $lostItems = Item::where('status', 'Perdido')->get();
         $returnedItems = Item::where('status', 'Devolvido')->get();
-        return view('items', compact('lostItems', 'returnedItems'));
+        return view('items', compact('lostItems', 'returnedItems', 'count'));
     }
 
     public function create()
@@ -40,7 +41,7 @@ class ItemsController extends Controller
             'location_id' => $request->input('location_id'),
         ]);
         if ($created) {
-            return redirect()->back()->with('message', 'Successfully created');
+            return redirect()->back()->with('message', 'Criado com sucesso');
         }
         return redirect()->back()->with('message', "Error: couldn't create item");
     }
@@ -63,7 +64,7 @@ class ItemsController extends Controller
     {
         $updated = $this->item->where('id', $id)->update($request->except(['_token', '_method']));
         if ($updated) {
-            return redirect()->back()->with('message', 'Successfully updated');
+            return redirect()->back()->with('message', 'Atualizado com sucesso');
         }
         return redirect()->back()->with('message', "Error: couldn't update item");
     }
@@ -71,6 +72,6 @@ class ItemsController extends Controller
     public function destroy(string $id)
     {
         $this->item->where('id', $id)->delete();
-        return redirect()->route('items.index')->with('message', 'Item deleted successfully');
+        return redirect()->route('items.index')->with('message', 'Item deletado');
     }
 }

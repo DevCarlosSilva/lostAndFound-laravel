@@ -18,8 +18,9 @@ class ReportsController extends Controller
 
     public function index()
     {
+        $count = Report::count();
         $reports = $this->report->all();
-        return view('reports', ['reports' => $reports]);
+        return view('reports', ['reports' => $reports], compact('count'));
     }
 
     public function create()
@@ -40,7 +41,7 @@ class ReportsController extends Controller
             'location_id' => $request->input('location_id'),
         ]);
         if ($created) {
-            return redirect()->back()->with('message', 'Successfully created');
+            return redirect()->back()->with('message', 'Criado com sucesso');
         }
         return redirect()->back()->with('message', "Error: couldn't create report");
     }
@@ -63,7 +64,7 @@ class ReportsController extends Controller
     {
         $updated = $this->report->where('id', $id)->update($request->except(['_token', '_method']));
         if ($updated) {
-            return redirect()->back()->with('message', 'Successfully updated');
+            return redirect()->back()->with('message', 'Atualizado com sucesso');
         }
         return redirect()->back()->with('message', "Error: couldn't update report");
     }
@@ -71,6 +72,6 @@ class ReportsController extends Controller
     public function destroy(string $id)
     {
         $this->report->where('id', $id)->delete();
-        return redirect()->route('reports.index')->with('message', 'Report deleted successfully');
+        return redirect()->route('reports.index')->with('message', 'Relato deletado');
     }
 }

@@ -32,9 +32,9 @@ class CategoriesController extends Controller
             'name' => $request->input('name')
         ]);
         if ($created) {
-            return redirect()->back()->with('message', 'Successfully created');
+            return redirect()->back()->with('message', 'Criado com sucesso');
         }
-        return redirect()->back()->with('message', "Error: couldn't create category");
+        return redirect()->back()->with('message', "Erro: Categoria não pode ser criada");
     }
 
     public function show(Category $category)
@@ -46,6 +46,6 @@ class CategoriesController extends Controller
     public function destroy(string $id)
     {
         $this->category->where('id', $id)->delete();
-        return redirect()->route('adminPanel')->with('message', 'Category deleted successfully');
+        return redirect()->route('adminPanel')->with('message', 'Categoria deletada');
     }
 }

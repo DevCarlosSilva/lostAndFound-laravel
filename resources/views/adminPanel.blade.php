@@ -7,47 +7,45 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div
+                class="bg-white text-xl font-semibold dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 text-gray-900 dark:text-gray-100">
+                <div>Quantidade de Categorias: {{ $countCategories }} <a class="d-block"
+                        href="{{ route('categories.create') }}">+</a></div>
+                <div>Quantidade de Locais: {{ $countLocations }} <a class="d-block"
+                        href="{{ route('locations.create') }}">+</a></div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mt-3">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     @if (session()->has('message'))
                     {{ session()->get('message'); }}
                     @endif
-                    <hr>
                     <div class="d-flex justify-content-evenly">
-                        <div class="d-flex flex-column text-center gap-4">
-                            <div>QUAN. DE CATEGORIAS: {{ $countCategories }}
-                                <a class="d-block" href="{{ route('categories.create') }}">+</a>
-                            </div>
-                            <div>QUAN. DE LOCAIS: {{ $countLocations }}
-                                <a class="d-block" href="{{ route('locations.create') }}">+</a>
-                            </div>
-                        </div>
-                        <hr>
                         <div class="">
-                            <h2 class="mt-3 font-semibold text-xl">Categorias</h2>
+                            <h2 class="font-semibold text-xl">Categorias</h2>
+                            <hr>
                             @if ($categories->isEmpty())
-                            <div class="">
+                            <div class="text-xl">
                                 <strong>Informação:</strong> Não há categorias cadastradas.
                             </div>
                             @else
-                            <table class="table">
+                            <table class="min-w-full bg-white border border-gray-300 text-center">
                                 <tr>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">Quan. de items com essa cat.</th>
-                                    <th scope="col">Quan. de relatos com essa cat.</th>
-                                    <th scope="col">Ações</th>
+                                    <th class="py-2 px-4 border-b" scope="col">Nome</th>
+                                    <th class="py-2 px-4 border-b" scope="col">Quan. de items com essa cat.</th>
+                                    <th class="py-2 px-4 border-b" scope="col">Quan. de relatos com essa cat.</th>
+                                    <th class="py-2 px-4 border-b" scope="col">Ações</th>
                                 </tr>
                                 @foreach ($categories as $category)
                                 <tr>
-                                    <td>{{ $category->name }}</td>
-                                    <td>{{ $category->items_count }}</td>
-                                    <td>{{ $category->reports_count }}</td>
-                                    <td class="d-flex">
+                                    <td class="py-2 px-4 border-b">{{ $category->name }}</td>
+                                    <td class="py-2 px-4 border-b">{{ $category->items_count }}</td>
+                                    <td class="py-2 px-4 border-b">{{ $category->reports_count }}</td>
+                                    <td class="py-2 px-4 border-b">
                                         <form action="{{ route('categories.destroy', ['category' => $category->id]) }}"
                                             method="post">
                                             @csrf
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button class="btn btn-danger p-0">Excluir</button>
+                                            <button style="color: red">Excluir</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -56,30 +54,31 @@
                                 </tr>
                             </table>
                             @endif
-                            <h2 class="mt-3 font-semibold text-xl">Locais</h2>
+                            <h2 class="font-semibold text-xl mt-3">Locais</h2>
+                            <hr>
                             @if ($locations->isEmpty())
-                            <div class="">
+                            <div class="text-xl">
                                 <strong>Informação:</strong> Não há locais cadastrados.
                             </div>
                             @else
-                            <table class="table">
+                            <table class="min-w-full bg-white border border-gray-300 text-center">
                                 <tr>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">Quan. de items com esse loc.</th>
-                                    <th scope="col">Quan. de relatos com esse loc.</th>
-                                    <th scope="col">Ações</th>
+                                    <th class="py-2 px-4 border-b" scope="col">Nome</th>
+                                    <th class="py-2 px-4 border-b" scope="col">Quan. de items com esse loc.</th>
+                                    <th class="py-2 px-4 border-b" scope="col">Quan. de relatos com esse loc.</th>
+                                    <th class="py-2 px-4 border-b" scope="col">Ações</th>
                                 </tr>
                                 @foreach ($locations as $location)
                                 <tr>
-                                    <td>{{ $location->name }}</td>
-                                    <td>{{ $location->items_count }}</td>
-                                    <td>{{ $location->reports_count }}</td>
-                                    <td class="d-flex">
+                                    <td class="py-2 px-4 border-b">{{ $location->name }}</td>
+                                    <td class="py-2 px-4 border-b">{{ $location->items_count }}</td>
+                                    <td class="py-2 px-4 border-b">{{ $location->reports_count }}</td>
+                                    <td class="py-2 px-4 border-b">
                                         <form action="{{ route('locations.destroy', ['location' => $location->id]) }}"
                                             method="post">
                                             @csrf
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button class="btn btn-danger p-0">Excluir</button>
+                                            <button style="color: red">Excluir</button>
                                         </form>
                                     </td>
                                 </tr>

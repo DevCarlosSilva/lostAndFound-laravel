@@ -16,24 +16,25 @@
           <form action="{{ route('reports.update', ['report' => $report->id]) }}" method="post">
             @csrf
             <input type="hidden" name="_method" value="PUT">
-            <input type="text" name="item_name" value="{{ $report->item_name }}">
-            <input type="text" name="description" value="{{ $report->description }}">
-            <label for="report_date">Data em que o relato foi feito:</label>
-            <input type="date" name="report_date" id="report_date" value="{{ $report->report_date }}">
-            <input type="text" name="reporter_name" value="{{ $report->reporter_name }}">
-            <select name="category_id">
+            <input class="mt-1 rounded" type="text" name="item_name" value="{{ $report->item_name }}"> <br>
+            <input class="mt-1 rounded" type="text" name="description" value="{{ $report->description }}"> <br>
+            <label class="mt-1 " for="report_date">Data em que o relato foi feito:</label> <br>
+            <input class="mt-1 rounded" type="date" name="report_date" id="report_date"
+              value="{{ $report->report_date }}"> <br>
+            <input class="mt-1 rounded" type="text" name="reporter_name" value="{{ $report->reporter_name }}"> <br>
+            <select class="mt-1 rounded" name="category_id">
               <option value="{{ $report->category_id }}" selected>{{ $report->category->name }}</option>
               @foreach($categories as $category)
               <option value="{{ $category->id }}">{{ $category->name }}</option>
               @endforeach
-            </select>
-            <select name="location_id">
+            </select> <br>
+            <select class="mt-1 rounded" name="location_id">
               <option value="{{ $report->location_id }}" selected>{{ $report->location->name }}</option>
               @foreach($locations as $location)
               <option value="{{ $location->id }}">{{ $location->name }}</option>
               @endforeach
-            </select>
-            <button type="submit">Editar</button>
+            </select> <br>
+            <button class="mt-1 underline" type="submit">Editar</button>
           </form>
         </div>
       </div>
